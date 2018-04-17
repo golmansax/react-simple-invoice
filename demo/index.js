@@ -3,7 +3,7 @@ import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { Invoice } from '../src';
 
-const app = express()
+const app = express();
 
 app.get('/', (req, res) => {
   const invoice = {
@@ -52,11 +52,11 @@ app.get('/', (req, res) => {
       invoice={invoice}
       customer={customer}
       company={company}
-    />
+    />,
   );
 
   res.send(`<!doctype html>${html}`);
 });
 
 const PORT = process.env.PORT || 3111;
-app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`))
+app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));

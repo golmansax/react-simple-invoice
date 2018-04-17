@@ -1,7 +1,5 @@
 import React from 'react';
-import moment from 'moment';
 import PropTypes from 'prop-types';
-import { formatCurrency, formatDate } from './utils';
 
 export default function EntityInfo({ entity }) {
   const { name, email, address } = entity;
@@ -22,5 +20,5 @@ EntityInfo.propTypes = {
     address: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.string.isRequired),
     ]),
-  }),
+  }).isRequired,
 };

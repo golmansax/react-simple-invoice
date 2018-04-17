@@ -1,0 +1,17 @@
+sudo: false
+language: node_js
+
+env:
+  global:
+    - NODE_ENV=production
+
+cache:
+  yarn: true
+  directories:
+    - node_modules # NPM packages
+
+install:
+  - yarn install --production=false
+
+script:
+  - npm test
