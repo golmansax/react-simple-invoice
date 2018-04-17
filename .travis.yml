@@ -15,4 +15,5 @@ install:
   - yarn install --production=false
 
 script:
-  - npm test
+  - yarn test
+  - yarn run build

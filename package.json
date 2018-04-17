@@ -2,8 +2,9 @@
   "name": "react-simple-invoice",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "build": "babel src --out-dir dist",
     "start": "nodemon --exec babel-node demo/index.js",
     "test": "eslint ."
   },
@@ -21,7 +22,11 @@
   },
   "homepage": "https://github.com/golmansax/react-simple-invoice#readme",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.3",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.11.0",
@@ -31,13 +36,7 @@
     "moment": "^2.22.1",
     "nodemon": "^1.17.3",
     "numeral": "^2.0.6",
-    "prop-types": "^15.6.1"
-  },
-  "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-plugin-transform-export-extensions": "^6.22.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
+    "prop-types": "^15.6.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2"
   }
