@@ -199,10 +199,10 @@ export default function Invoice({
               </tr>
               {invoice.description && [
                 <tr className="heading" key="heading">
-                  <td className="subheading" colspan="2">Description</td>
+                  <td className="subheading" colSpan="2">Description</td>
                 </tr>,
                 <tr className="details" key="details">
-                  <td colspan="2">{invoice.description}</td>
+                  <td colSpan="2">{invoice.description}</td>
                 </tr>,
               ]}
               <tr className="heading">
