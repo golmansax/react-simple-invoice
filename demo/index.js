@@ -35,6 +35,7 @@ app.get('/', (req, res) => {
       '226 W 46th St',
       'New York, NY 10036',
     ],
+    logoUrl: 'http://p.fod4.com/p/media/c9c34f4e09/JqdTM3oTiqTcrbFoLdxb_Hamilton_200x200.jpg',
   };
 
   const company = {

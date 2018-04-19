@@ -27,6 +27,10 @@ const styles = `
   vertical-align:top;
 }
 
+.invoice-box table td td{
+  padding:0;
+}
+
 .invoice-box table tr td:nth-child(2){
   text-align:right;
 }
@@ -36,13 +40,26 @@ const styles = `
 }
 
 .invoice-box table tr.top table td.title{
-  font-size:45px;
-  line-height:45px;
+  font-size:35px;
+  line-height:35px;
   color:#333;
 }
 
 .invoice-box table tr.information table td{
   padding-bottom:40px;
+}
+
+.invoice-box table table.invoice-information{
+  display:inline-block;
+  width:auto;
+}
+
+.invoice-box table table.invoice-information td:first-child{
+  padding-right:30px;
+}
+
+.invoice-box table tr.information table td td{
+  padding-bottom:0;
 }
 
 .invoice-box table tr.heading td{
@@ -64,8 +81,14 @@ const styles = `
 }
 
 .invoice-box table tr.total td:nth-child(2){
-  border-top:2px solid #eee;
+  background:#eee;
   font-weight:bold;
+}
+
+.invoice-box table .subheading {
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
 }
 
 @media only screen and (max-width: 600px) {
@@ -113,23 +136,16 @@ export default function Invoice({
                   <table>
                     <tbody>
                       <tr>
+                        <td>
+                          <div className="subheading">Bill From:</div>
+                          <EntityInfo entity={company} />
+                        </td>
                         <td className="title">
                           <img
                             src={company.logoUrl}
                             style={{ width: '100%', maxWidth: '200px' }}
                             alt={company.name}
                           />
-                        </td>
-                        <td>
-                          Invoice #: {invoice.id}<br />
-                          Created: {formatDate(invoice.createdDate)}<br />
-                          {invoice.paidDate ? (
-                            <div>Paid: {formatDate(invoice.paidDate)}</div>
-                          ) : (
-                            <div>
-                              Due: {formatDate(invoice.dueDate)}
-                            </div>
-                          )}
                         </td>
                       </tr>
                     </tbody>
@@ -142,32 +158,53 @@ export default function Invoice({
                     <tbody>
                       <tr>
                         <td>
-                          <div><strong>Bill From:</strong></div>
-                          <EntityInfo entity={company} />
+                          <div className="subheading">Bill To:</div>
+                          <EntityInfo entity={customer} />
                         </td>
                         <td>
-                          <div><strong>Bill To:</strong></div>
-                          <EntityInfo entity={customer} />
+                          <table className="invoice-information">
+                            <tbody>
+                              <tr>
+                                <td className="subheading">Invoice #</td>
+                                <td>{invoice.id}</td>
+                              </tr>
+                              {invoice.description && (
+                                <tr>
+                                  <td className="subheading">Description</td>
+                                  <td>{invoice.description}</td>
+                                </tr>
+                              )}
+                              {invoice.paymentMethod && (
+                                <tr>
+                                  <td className="subheading">Payment Method</td>
+                                  <td>{invoice.paymentMethod}</td>
+                                </tr>
+                              )}
+                              <tr>
+                                <td className="subheading">Created</td>
+                                <td>{formatDate(invoice.createdDate)}</td>
+                              </tr>
+                              {invoice.paidDate ? (
+                                <tr>
+                                  <td className="subheading">Paid</td>
+                                  <td>{formatDate(invoice.paidDate)}</td>
+                                </tr>
+                              ) : (
+                                <tr>
+                                  <td className="subheading">Due</td>
+                                  <td>{formatDate(invoice.dueDate)}</td>
+                                </tr>
+                              )}
+                            </tbody>
+                          </table>
                         </td>
                       </tr>
                     </tbody>
                   </table>
                 </td>
               </tr>
-              {invoice.paymentMethod && [
-                <tr className="heading" key="heading">
-                  <td>Payment Method</td>
-                  <td />
-                </tr>,
-                <tr className="details" key="details">
-                  <td>{invoice.paymentMethod}</td>
-                  <td />
-                </tr>,
-              ]}
               <tr className="heading">
-                <td>
-                  Invoice: {invoice.description}
-                </td>
+                <td className="subheading">Item</td>
                 <td />
               </tr>
               {items.map((item) => (
@@ -178,7 +215,16 @@ export default function Invoice({
               ))}
               <tr className="total">
                 <td />
-                <td>Total: {formatCurrency(totalAmount)}</td>
+                <td>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td className="subheading">Total</td>
+                        <td>{formatCurrency(totalAmount)}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
               </tr>
             </tbody>
           </table>

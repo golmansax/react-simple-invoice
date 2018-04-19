@@ -1,6 +1,6 @@
 # React simple invoice
 
-A React component version of this simple HTML invoice template (https://github.com/sparksuite/simple-html-invoice-template).
+A React component inspired by this simple HTML invoice template (https://github.com/sparksuite/simple-html-invoice-template).
 
 ## Server-side usage
 
