@@ -149,20 +149,6 @@ function Invoice(_ref) {
                                 invoice.id
                               )
                             ),
-                            invoice.description && _react2.default.createElement(
-                              'tr',
-                              null,
-                              _react2.default.createElement(
-                                'td',
-                                { className: 'subheading' },
-                                'Description'
-                              ),
-                              _react2.default.createElement(
-                                'td',
-                                null,
-                                invoice.description
-                              )
-                            ),
                             invoice.paymentMethod && _react2.default.createElement(
                               'tr',
                               null,
@@ -226,6 +212,23 @@ function Invoice(_ref) {
                 )
               )
             ),
+            invoice.description && [_react2.default.createElement(
+              'tr',
+              { className: 'heading', key: 'heading' },
+              _react2.default.createElement(
+                'td',
+                { className: 'subheading', colSpan: '2' },
+                'Description'
+              )
+            ), _react2.default.createElement(
+              'tr',
+              { className: 'details', key: 'details' },
+              _react2.default.createElement(
+                'td',
+                { colSpan: '2' },
+                invoice.description
+              )
+            )],
             _react2.default.createElement(
               'tr',
               { className: 'heading' },
