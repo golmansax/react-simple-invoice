@@ -17,7 +17,7 @@ var _numeral2 = _interopRequireDefault(_numeral);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function formatDate(date) {
-  return (0, _moment2.default)(date).format('MMM D, YYYY');
+  return (0, _moment2.default)(date).format('MMM Do, YYYY');
 }
 
 function formatCurrency(amount) {
