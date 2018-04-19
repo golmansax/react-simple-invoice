@@ -168,12 +168,6 @@ export default function Invoice({
                                 <td className="subheading">Invoice #</td>
                                 <td>{invoice.id}</td>
                               </tr>
-                              {invoice.description && (
-                                <tr>
-                                  <td className="subheading">Description</td>
-                                  <td>{invoice.description}</td>
-                                </tr>
-                              )}
                               {invoice.paymentMethod && (
                                 <tr>
                                   <td className="subheading">Payment Method</td>
@@ -203,6 +197,14 @@ export default function Invoice({
                   </table>
                 </td>
               </tr>
+              {invoice.description && [
+                <tr className="heading" key="heading">
+                  <td className="subheading" colspan="2">Description</td>
+                </tr>,
+                <tr className="details" key="details">
+                  <td colspan="2">{invoice.description}</td>
+                </tr>,
+              ]}
               <tr className="heading">
                 <td className="subheading">Item</td>
                 <td />
