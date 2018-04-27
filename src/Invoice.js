@@ -178,12 +178,13 @@ export default function Invoice({
                                 <td className="subheading">Created</td>
                                 <td>{formatDate(invoice.createdDate)}</td>
                               </tr>
-                              {invoice.paidDate ? (
+                              {invoice.paidDate && (
                                 <tr>
                                   <td className="subheading">Paid</td>
                                   <td>{formatDate(invoice.paidDate)}</td>
                                 </tr>
-                              ) : (
+                              )}
+                              {invoice.dueDate && !invoice.paidDate && (
                                 <tr>
                                   <td className="subheading">Due</td>
                                   <td>{formatDate(invoice.dueDate)}</td>

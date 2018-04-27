@@ -177,7 +177,7 @@ function Invoice(_ref) {
                                 (0, _utils.formatDate)(invoice.createdDate)
                               )
                             ),
-                            invoice.paidDate ? _react2.default.createElement(
+                            invoice.paidDate && _react2.default.createElement(
                               'tr',
                               null,
                               _react2.default.createElement(
@@ -190,7 +190,8 @@ function Invoice(_ref) {
                                 null,
                                 (0, _utils.formatDate)(invoice.paidDate)
                               )
-                            ) : _react2.default.createElement(
+                            ),
+                            invoice.dueDate && !invoice.paidDate && _react2.default.createElement(
                               'tr',
                               null,
                               _react2.default.createElement(
