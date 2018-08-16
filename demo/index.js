@@ -56,7 +56,7 @@ app.get('/', (req, res) => {
       notes={(
         <p>
           If you have any questions, please
-          email <a href='mailto:contact@shakeshack.com'>contact@shakeshack.com</a>.
+          email <a href="mailto:contact@shakeshack.com">contact@shakeshack.com</a>.
         </p>
       )}
     />,

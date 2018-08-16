@@ -265,8 +265,10 @@ Invoice.propTypes = {
     }).isRequired).isRequired,
   }).isRequired,
   lang: PropTypes.string,
+  notes: PropTypes.node,
 };
 
 Invoice.defaultProps = {
   lang: 'en_US',
+  notes: null,
 };

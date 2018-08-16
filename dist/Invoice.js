@@ -323,9 +323,11 @@ Invoice.propTypes = {
       amount: _propTypes2.default.number.isRequired
     }).isRequired).isRequired
   }).isRequired,
-  lang: _propTypes2.default.string
+  lang: _propTypes2.default.string,
+  notes: _propTypes2.default.node
 };
 
 Invoice.defaultProps = {
-  lang: 'en_US'
+  lang: 'en_US',
+  notes: null
 };
