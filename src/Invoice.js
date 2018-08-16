@@ -85,7 +85,7 @@ const styles = `
   font-weight:bold;
 }
 
-.invoice-box table .subheading {
+.invoice-box .subheading {
   font-weight: bold;
   font-size: 14px;
   text-transform: uppercase;
@@ -114,7 +114,7 @@ const styles = `
 `;
 
 export default function Invoice({
-  invoice, company, customer, lang,
+  invoice, company, customer, lang, notes,
 }) {
   const { items } = invoice;
   const totalAmount = items.reduce((sum, item) => sum + item.amount, 0);
@@ -137,7 +137,7 @@ export default function Invoice({
                     <tbody>
                       <tr>
                         <td>
-                          <div className="subheading">Bill From:</div>
+                          <div className="subheading">Bill From</div>
                           <EntityInfo entity={company} />
                         </td>
                         <td className="title">
@@ -158,7 +158,7 @@ export default function Invoice({
                     <tbody>
                       <tr>
                         <td>
-                          <div className="subheading">Bill To:</div>
+                          <div className="subheading">Bill To</div>
                           <EntityInfo entity={customer} />
                         </td>
                         <td>
@@ -231,6 +231,12 @@ export default function Invoice({
               </tr>
             </tbody>
           </table>
+          {notes && (
+            <div style={{ marginTop: 30 }}>
+              <div className="subheading">Notes</div>
+              {notes}
+            </div>
+          )}
         </div>
       </body>
     </html>

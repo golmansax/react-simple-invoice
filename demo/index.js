@@ -53,6 +53,12 @@ app.get('/', (req, res) => {
       invoice={invoice}
       customer={customer}
       company={company}
+      notes={(
+        <p>
+          If you have any questions, please
+          email <a href='mailto:contact@shakeshack.com'>contact@shakeshack.com</a>.
+        </p>
+      )}
     />,
   );
 

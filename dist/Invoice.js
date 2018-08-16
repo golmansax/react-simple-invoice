@@ -21,13 +21,14 @@ var _EntityInfo2 = _interopRequireDefault(_EntityInfo);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var styles = '\n.invoice-box{\n  max-width:800px;\n  margin:auto;\n  padding:30px;\n  border:1px solid #eee;\n  box-shadow:0 0 10px rgba(0, 0, 0, .15);\n  font-size:16px;\n  line-height:24px;\n  font-family:\'Helvetica Neue\', \'Helvetica\', Helvetica, Arial, sans-serif;\n  color:#555;\n}\n\n.invoice-box table{\n  width:100%;\n  line-height:inherit;\n  text-align:left;\n}\n\n.invoice-box table td{\n  padding:5px;\n  vertical-align:top;\n}\n\n.invoice-box table td td{\n  padding:0;\n}\n\n.invoice-box table tr td:nth-child(2){\n  text-align:right;\n}\n\n.invoice-box table tr.top table td{\n  padding-bottom:20px;\n}\n\n.invoice-box table tr.top table td.title{\n  font-size:35px;\n  line-height:35px;\n  color:#333;\n}\n\n.invoice-box table tr.information table td{\n  padding-bottom:40px;\n}\n\n.invoice-box table table.invoice-information{\n  display:inline-block;\n  width:auto;\n}\n\n.invoice-box table table.invoice-information td:first-child{\n  padding-right:30px;\n}\n\n.invoice-box table tr.information table td td{\n  padding-bottom:0;\n}\n\n.invoice-box table tr.heading td{\n  background:#eee;\n  border-bottom:1px solid #ddd;\n  font-weight:bold;\n}\n\n.invoice-box table tr.details td{\n  padding-bottom:20px;\n}\n\n.invoice-box table tr.item td{\n  border-bottom:1px solid #eee;\n}\n\n.invoice-box table tr.item.last td{\n  border-bottom:none;\n}\n\n.invoice-box table tr.total td:nth-child(2){\n  background:#eee;\n  font-weight:bold;\n}\n\n.invoice-box table .subheading {\n  font-weight: bold;\n  font-size: 14px;\n  text-transform: uppercase;\n}\n\n@media only screen and (max-width: 600px) {\n  .invoice-box table tr.top table td{\n    width:100%;\n    display:block;\n    text-align:center;\n  }\n\n  .invoice-box table tr.information table td{\n    width:100%;\n    display:block;\n    text-align:center;\n  }\n}\n\n@media print {\n  .invoice-box {\n    box-shadow: none;\n    border: 0;\n  }\n}\n';
+var styles = '\n.invoice-box{\n  max-width:800px;\n  margin:auto;\n  padding:30px;\n  border:1px solid #eee;\n  box-shadow:0 0 10px rgba(0, 0, 0, .15);\n  font-size:16px;\n  line-height:24px;\n  font-family:\'Helvetica Neue\', \'Helvetica\', Helvetica, Arial, sans-serif;\n  color:#555;\n}\n\n.invoice-box table{\n  width:100%;\n  line-height:inherit;\n  text-align:left;\n}\n\n.invoice-box table td{\n  padding:5px;\n  vertical-align:top;\n}\n\n.invoice-box table td td{\n  padding:0;\n}\n\n.invoice-box table tr td:nth-child(2){\n  text-align:right;\n}\n\n.invoice-box table tr.top table td{\n  padding-bottom:20px;\n}\n\n.invoice-box table tr.top table td.title{\n  font-size:35px;\n  line-height:35px;\n  color:#333;\n}\n\n.invoice-box table tr.information table td{\n  padding-bottom:40px;\n}\n\n.invoice-box table table.invoice-information{\n  display:inline-block;\n  width:auto;\n}\n\n.invoice-box table table.invoice-information td:first-child{\n  padding-right:30px;\n}\n\n.invoice-box table tr.information table td td{\n  padding-bottom:0;\n}\n\n.invoice-box table tr.heading td{\n  background:#eee;\n  border-bottom:1px solid #ddd;\n  font-weight:bold;\n}\n\n.invoice-box table tr.details td{\n  padding-bottom:20px;\n}\n\n.invoice-box table tr.item td{\n  border-bottom:1px solid #eee;\n}\n\n.invoice-box table tr.item.last td{\n  border-bottom:none;\n}\n\n.invoice-box table tr.total td:nth-child(2){\n  background:#eee;\n  font-weight:bold;\n}\n\n.invoice-box .subheading {\n  font-weight: bold;\n  font-size: 14px;\n  text-transform: uppercase;\n}\n\n@media only screen and (max-width: 600px) {\n  .invoice-box table tr.top table td{\n    width:100%;\n    display:block;\n    text-align:center;\n  }\n\n  .invoice-box table tr.information table td{\n    width:100%;\n    display:block;\n    text-align:center;\n  }\n}\n\n@media print {\n  .invoice-box {\n    box-shadow: none;\n    border: 0;\n  }\n}\n';
 
 function Invoice(_ref) {
   var invoice = _ref.invoice,
       company = _ref.company,
       customer = _ref.customer,
-      lang = _ref.lang;
+      lang = _ref.lang,
+      notes = _ref.notes;
   var items = invoice.items;
 
   var totalAmount = items.reduce(function (sum, item) {
@@ -83,7 +84,7 @@ function Invoice(_ref) {
                         _react2.default.createElement(
                           'div',
                           { className: 'subheading' },
-                          'Bill From:'
+                          'Bill From'
                         ),
                         _react2.default.createElement(_EntityInfo2.default, { entity: company })
                       ),
@@ -122,7 +123,7 @@ function Invoice(_ref) {
                         _react2.default.createElement(
                           'div',
                           { className: 'subheading' },
-                          'Bill To:'
+                          'Bill To'
                         ),
                         _react2.default.createElement(_EntityInfo2.default, { entity: customer })
                       ),
@@ -288,6 +289,16 @@ function Invoice(_ref) {
               )
             )
           )
+        ),
+        notes && _react2.default.createElement(
+          'div',
+          { style: { marginTop: 30 } },
+          _react2.default.createElement(
+            'div',
+            { className: 'subheading' },
+            'Notes'
+          ),
+          notes
         )
       )
     )
