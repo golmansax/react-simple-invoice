@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
   };
 
   const customer = {
-    name: 'Lin-Manuel Miranda',
+    name: 'Lin-Manuel Miranda, Founder and Producer of Hamilton, the American Musical',
     email: 'me@linmanuel.com',
     address: [
       '226 W 46th St',

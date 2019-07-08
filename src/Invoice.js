@@ -49,6 +49,10 @@ const styles = `
   padding-bottom:40px;
 }
 
+.invoice-box table tr.information table td.information-column{
+  width:50%;
+}
+
 .invoice-box table table.invoice-information{
   display:inline-block;
   width:auto;
@@ -157,11 +161,11 @@ export default function Invoice({
                   <table>
                     <tbody>
                       <tr>
-                        <td>
+                        <td className="information-column">
                           <div className="subheading">Bill To</div>
                           <EntityInfo entity={customer} />
                         </td>
-                        <td>
+                        <td className="information-column">
                           <table className="invoice-information">
                             <tbody>
                               <tr>
