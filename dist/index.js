@@ -1,14 +1,15 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Invoice = undefined;
+Object.defineProperty(exports, "Invoice", {
+  enumerable: true,
+  get: function get() {
+    return _Invoice2["default"];
+  }
+});
 
-var _Invoice2 = require('./Invoice');
+var _Invoice2 = _interopRequireDefault(require("./Invoice"));
 
-var _Invoice3 = _interopRequireDefault(_Invoice2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.Invoice = _Invoice3.default;
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }

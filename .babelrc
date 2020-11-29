@@ -1,4 +1,4 @@
 {
-  "presets": ["env", "react"],
-  "plugins": ["transform-export-extensions"]
+  "presets": ["@babel/env", "@babel/react"],
+  "plugins": ["@babel/plugin-proposal-export-default-from"]
 }
