@@ -147,7 +147,14 @@ export default function Invoice({
                         <td className="title">
                           <img
                             src={company.logoUrl}
-                            style={{ width: '100%', maxWidth: '200px' }}
+                            style={{
+                              display: 'block',
+                              width: 'auto',
+                              height: 'auto',
+                              maxWidth: '200px',
+                              maxHeight: '100px',
+                              marginLeft: 'auto',
+                            }}
                             alt={company.name}
                           />
                         </td>

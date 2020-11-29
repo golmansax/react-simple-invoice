@@ -56,8 +56,12 @@ function Invoice(_ref) {
   }, /*#__PURE__*/_react["default"].createElement("img", {
     src: company.logoUrl,
     style: {
-      width: '100%',
-      maxWidth: '200px'
+      display: 'block',
+      width: 'auto',
+      height: 'auto',
+      maxWidth: '200px',
+      maxHeight: '100px',
+      marginLeft: 'auto'
     },
     alt: company.name
   }))))))), /*#__PURE__*/_react["default"].createElement("tr", {
