@@ -40,5 +40,8 @@
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2"
+  },
+  "dependencies": {
+    "@babel/node": "^7.12.6"
   }
 }
