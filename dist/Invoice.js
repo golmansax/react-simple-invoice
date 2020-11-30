@@ -27,11 +27,12 @@ function Invoice(_ref) {
   var totalAmount = items.reduce(function (sum, item) {
     return sum + item.amount;
   }, 0);
+  var invoiceName = invoice.name || 'Invoice';
   return /*#__PURE__*/_react["default"].createElement("html", {
     lang: lang
   }, /*#__PURE__*/_react["default"].createElement("head", null, /*#__PURE__*/_react["default"].createElement("meta", {
     charSet: "utf-8"
-  }), /*#__PURE__*/_react["default"].createElement("title", null, company.name, " Invoice"), /*#__PURE__*/_react["default"].createElement("style", {
+  }), /*#__PURE__*/_react["default"].createElement("title", null, company.name, " ", invoiceName), /*#__PURE__*/_react["default"].createElement("style", {
     dangerouslySetInnerHTML: {
       __html: styles
     }
@@ -49,7 +50,7 @@ function Invoice(_ref) {
     colSpan: "2"
   }, /*#__PURE__*/_react["default"].createElement("table", null, /*#__PURE__*/_react["default"].createElement("tbody", null, /*#__PURE__*/_react["default"].createElement("tr", null, /*#__PURE__*/_react["default"].createElement("td", null, /*#__PURE__*/_react["default"].createElement("div", {
     className: "subheading"
-  }, "Bill From"), /*#__PURE__*/_react["default"].createElement(_EntityInfo["default"], {
+  }, "From"), /*#__PURE__*/_react["default"].createElement(_EntityInfo["default"], {
     entity: company
   })), /*#__PURE__*/_react["default"].createElement("td", {
     className: "title"
@@ -72,7 +73,7 @@ function Invoice(_ref) {
     className: "information-column"
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "subheading"
-  }, "Bill To"), /*#__PURE__*/_react["default"].createElement(_EntityInfo["default"], {
+  }, "To"), /*#__PURE__*/_react["default"].createElement(_EntityInfo["default"], {
     entity: customer
   })), /*#__PURE__*/_react["default"].createElement("td", {
     className: "information-column"
@@ -80,9 +81,9 @@ function Invoice(_ref) {
     className: "invoice-information"
   }, /*#__PURE__*/_react["default"].createElement("tbody", null, /*#__PURE__*/_react["default"].createElement("tr", null, /*#__PURE__*/_react["default"].createElement("td", {
     className: "subheading"
-  }, "Invoice #"), /*#__PURE__*/_react["default"].createElement("td", null, invoice.id)), invoice.paymentMethod && /*#__PURE__*/_react["default"].createElement("tr", null, /*#__PURE__*/_react["default"].createElement("td", {
+  }, invoiceName, " #"), /*#__PURE__*/_react["default"].createElement("td", null, invoice.id)), invoice.paymentMethod && /*#__PURE__*/_react["default"].createElement("tr", null, /*#__PURE__*/_react["default"].createElement("td", {
     className: "subheading"
-  }, "Payment Method"), /*#__PURE__*/_react["default"].createElement("td", null, invoice.paymentMethod)), /*#__PURE__*/_react["default"].createElement("tr", null, /*#__PURE__*/_react["default"].createElement("td", {
+  }, "Payment Method"), /*#__PURE__*/_react["default"].createElement("td", null, invoice.paymentMethod)), invoice.createdDate && /*#__PURE__*/_react["default"].createElement("tr", null, /*#__PURE__*/_react["default"].createElement("td", {
     className: "subheading"
   }, "Created"), /*#__PURE__*/_react["default"].createElement("td", null, (0, _utils.formatDate)(invoice.createdDate))), invoice.paidDate && /*#__PURE__*/_react["default"].createElement("tr", null, /*#__PURE__*/_react["default"].createElement("td", {
     className: "subheading"
@@ -128,8 +129,8 @@ Invoice.propTypes = {
   }).isRequired,
   customer: _propTypes["default"].shape({}).isRequired,
   invoice: _propTypes["default"].shape({
-    createdDate: _propTypes["default"].string.isRequired,
-    dueDate: _propTypes["default"].string.isRequired,
+    createdDate: _propTypes["default"].string,
+    dueDate: _propTypes["default"].string,
     paidDate: _propTypes["default"].string,
     paymentMethod: _propTypes["default"].string,
     id: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].number]).isRequired,
@@ -137,7 +138,8 @@ Invoice.propTypes = {
     items: _propTypes["default"].arrayOf(_propTypes["default"].shape({
       description: _propTypes["default"].string.isRequired,
       amount: _propTypes["default"].number.isRequired
-    }).isRequired).isRequired
+    }).isRequired).isRequired,
+    name: _propTypes["default"].string
   }).isRequired,
   lang: _propTypes["default"].string,
   notes: _propTypes["default"].node
