@@ -123,11 +123,13 @@ export default function Invoice({
   const { items } = invoice;
   const totalAmount = items.reduce((sum, item) => sum + item.amount, 0);
 
+  const invoiceName = invoice.name || 'Invoice';
+
   return (
     <html lang={lang}>
       <head>
         <meta charSet="utf-8" />
-        <title>{company.name} Invoice</title>
+        <title>{company.name} {invoiceName}</title>
         <style dangerouslySetInnerHTML={{ __html: styles }} />
         <meta name="robots" content="noindex, nofollow" />
       </head>
@@ -141,7 +143,7 @@ export default function Invoice({
                     <tbody>
                       <tr>
                         <td>
-                          <div className="subheading">Bill From</div>
+                          <div className="subheading">From</div>
                           <EntityInfo entity={company} />
                         </td>
                         <td className="title">
@@ -169,14 +171,14 @@ export default function Invoice({
                     <tbody>
                       <tr>
                         <td className="information-column">
-                          <div className="subheading">Bill To</div>
+                          <div className="subheading">To</div>
                           <EntityInfo entity={customer} />
                         </td>
                         <td className="information-column">
                           <table className="invoice-information">
                             <tbody>
                               <tr>
-                                <td className="subheading">Invoice #</td>
+                                <td className="subheading">{invoiceName} #</td>
                                 <td>{invoice.id}</td>
                               </tr>
                               {invoice.paymentMethod && (
@@ -185,10 +187,12 @@ export default function Invoice({
                                   <td>{invoice.paymentMethod}</td>
                                 </tr>
                               )}
-                              <tr>
-                                <td className="subheading">Created</td>
-                                <td>{formatDate(invoice.createdDate)}</td>
-                              </tr>
+                              {invoice.createdDate && (
+                                <tr>
+                                  <td className="subheading">Created</td>
+                                  <td>{formatDate(invoice.createdDate)}</td>
+                                </tr>
+                              )}
                               {invoice.paidDate && (
                                 <tr>
                                   <td className="subheading">Paid</td>
@@ -261,8 +265,8 @@ Invoice.propTypes = {
   }).isRequired,
   customer: PropTypes.shape({}).isRequired,
   invoice: PropTypes.shape({
-    createdDate: PropTypes.string.isRequired,
-    dueDate: PropTypes.string.isRequired,
+    createdDate: PropTypes.string,
+    dueDate: PropTypes.string,
     paidDate: PropTypes.string,
     paymentMethod: PropTypes.string,
     id: PropTypes.oneOfType([
@@ -274,6 +278,7 @@ Invoice.propTypes = {
       description: PropTypes.string.isRequired,
       amount: PropTypes.number.isRequired,
     }).isRequired).isRequired,
+    name: PropTypes.string,
   }).isRequired,
   lang: PropTypes.string,
   notes: PropTypes.node,

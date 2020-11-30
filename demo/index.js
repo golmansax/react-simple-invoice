@@ -7,6 +7,7 @@ const app = express();
 
 app.get('/', (req, res) => {
   const invoice = {
+    name: 'Transaction',
     createdDate: '2018-03-16',
     dueDate: '2018-04-16',
     paymentMethod: 'PayPal',
