@@ -51,7 +51,7 @@ app.get('/', (req, res) => {
 
   const html = renderToStaticMarkup(
     <Invoice
-      invoice={invoice}
+      invoices={[invoice, invoice]}
       customer={customer}
       company={company}
       notes={(
