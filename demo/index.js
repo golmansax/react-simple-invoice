@@ -6,7 +6,7 @@ import { Invoice } from '../src';
 const app = express();
 
 app.get('/', (req, res) => {
-  const invoice = {
+  const invoice1 = {
     name: 'Transaction',
     createdDate: '2018-03-16',
     dueDate: '2018-04-16',
@@ -22,12 +22,18 @@ app.get('/', (req, res) => {
         description: 'Crinkle Cut Fries',
         amount: 2.99,
       },
-      {
-        description: 'Strawberry Shake',
-        amount: 5.29,
-      },
     ],
   };
+
+  const invoice2 = { ...invoice1 };
+  invoice2.items = [
+    ...invoice2.items,
+    {
+      description: 'Strawberry Shake (Free)',
+      originalAmount: 5.29,
+      amount: 0,
+    },
+  ];
 
   const customer = {
     name: 'Lin-Manuel Miranda, Founder and Producer of Hamilton, the American Musical',
@@ -51,7 +57,7 @@ app.get('/', (req, res) => {
 
   const html = renderToStaticMarkup(
     <Invoice
-      invoices={[invoice, invoice]}
+      invoices={[invoice1, invoice2]}
       customer={customer}
       company={company}
       notes={(

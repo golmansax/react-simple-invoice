@@ -95,6 +95,13 @@ const styles = `
   text-transform: uppercase;
 }
 
+.invoice-box .original-amount {
+  text-decoration: line-through;
+  color: #888;
+  font-weight: normal;
+  margin-right: 5px;
+}
+
 @media only screen and (max-width: 600px) {
   .invoice-box table tr.top table td{
     width:100%;
@@ -244,7 +251,14 @@ export default function Invoice({
                   {items.map((item) => (
                     <tr className="item" key={item.description}>
                       <td>{item.description}</td>
-                      <td>{formatCurrency(item.amount)}</td>
+                      <td>
+                        {(item.originalAmount && item.originalAmount !== item.amount) && (
+                          <span className="original-amount">
+                            {formatCurrency(item.originalAmount)}
+                          </span>
+                        )}
+                        {formatCurrency(item.amount)}
+                      </td>
                     </tr>
                   ))}
                   <tr className="total">
@@ -254,7 +268,9 @@ export default function Invoice({
                         <tbody>
                           <tr>
                             <td className="subheading">Total</td>
-                            <td>{formatCurrency(totalAmount)}</td>
+                            <td>
+                              {formatCurrency(totalAmount)}
+                            </td>
                           </tr>
                         </tbody>
                       </table>
@@ -289,6 +305,7 @@ const InvoicePropType = PropTypes.shape({
   items: PropTypes.arrayOf(PropTypes.shape({
     description: PropTypes.string.isRequired,
     amount: PropTypes.number.isRequired,
+    originalAmount: PropTypes.number,
   }).isRequired).isRequired,
   name: PropTypes.string,
   terms: PropTypes.string,
