@@ -325,5 +325,7 @@ Invoice.propTypes = {
 
 Invoice.defaultProps = {
   lang: 'en_US',
+  invoice: null,
+  invoices: null,
   notes: null,
 };
