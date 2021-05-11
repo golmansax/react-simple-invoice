@@ -203,6 +203,12 @@ export default function Invoice({
                                       <td>{formatDate(invoice.createdDate)}</td>
                                     </tr>
                                   )}
+                                  {invoice.terms && (
+                                    <tr>
+                                      <td className="subheading">Terms</td>
+                                      <td>{formatDate(invoice.terms)}</td>
+                                    </tr>
+                                  )}
                                   {invoice.paidDate && (
                                     <tr>
                                       <td className="subheading">Paid Date</td>
@@ -285,6 +291,7 @@ const InvoicePropType = PropTypes.shape({
     amount: PropTypes.number.isRequired,
   }).isRequired).isRequired,
   name: PropTypes.string,
+  terms: PropTypes.string,
 });
 
 Invoice.propTypes = {
