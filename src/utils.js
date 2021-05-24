@@ -2,7 +2,7 @@ import moment from 'moment';
 import numeral from 'numeral';
 
 export function formatDate(date) {
-  return moment(date).format('MMM Do, YYYY');
+  return moment(date).format('MMMM Do, YYYY');
 }
 
 export function formatCurrency(amount) {
