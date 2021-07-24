@@ -66,6 +66,7 @@ app.get('/', (req, res) => {
           email <a href="mailto:contact@shakeshack.com">contact@shakeshack.com</a>.
         </p>
       )}
+      currency="€"
     />,
   );
 
