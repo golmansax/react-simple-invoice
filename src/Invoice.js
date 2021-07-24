@@ -126,7 +126,7 @@ const styles = `
 `;
 
 export default function Invoice({
-  invoice: invoiceProp, invoices: invoicesProp, company, customer, lang, notes,
+  invoice: invoiceProp, invoices: invoicesProp, company, customer, lang, notes, currency, 
 }) {
   const invoices = invoicesProp || [invoiceProp];
 
@@ -254,10 +254,10 @@ export default function Invoice({
                       <td>
                         {(item.originalAmount && item.originalAmount !== item.amount) && (
                           <span className="original-amount">
-                            {formatCurrency(item.originalAmount)}
+                            {formatCurrency(item.originalAmount, currency)}
                           </span>
                         )}
-                        {formatCurrency(item.amount)}
+                        {formatCurrency(item.amount, currency)}
                       </td>
                     </tr>
                   ))}
@@ -269,7 +269,7 @@ export default function Invoice({
                           <tr>
                             <td className="subheading">Total</td>
                             <td>
-                              {formatCurrency(totalAmount)}
+                              {formatCurrency(totalAmount, currency)}
                             </td>
                           </tr>
                         </tbody>
